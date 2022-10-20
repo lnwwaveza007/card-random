@@ -1,0 +1,184 @@
+body {
+  width: 100%;
+  height: 50%;
+  /*background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./imgs/castle_bg.jpg') no-repeat center center fixed;*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.page-wrap {
+	position: relative;
+	width: 700px;
+	margin: 0 auto;
+}
+
+
+.container {
+	position: relative;
+}
+
+.card-container {
+	cursor: pointer;
+	height: 175px;
+	width: 120px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	transition: top 300ms linear, left 300ms linear;
+}
+
+
+.card {
+	margin: 0px;
+	height: 100%;
+	width: 100%;
+	transition: transform 1s ease-in-out;
+	transform-style: preserve-3d;
+	-webkit-box-shadow: 0 2px 7px rgba(0,0,0,.3);
+	box-shadow: 0 2px 7px rgba(0,0,0,.3);
+	-webkit-transition: -webkit-transform .5s ease-in;
+}
+
+.card-container .card.clicked {
+	transform: rotateY(180deg);
+	/*transform:rotateY(3780deg);
+  transition: transform 4s ease-out;*/
+}
+
+.card.red {
+	color: red;
+}
+
+.card .number {
+	position: absolute;
+	font-size: 2.5rem;
+}
+
+.card .number.top {
+	top: 10px;
+	left: 10px;
+}
+
+.card .number.bottom {
+	bottom: 10px;
+	right: 10px;
+}
+
+.card .suit {
+	font-size: 3rem;
+}
+
+/* add turn over*/
+
+.card figure {
+	border-radius: 5px;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	margin: 0;
+	display: flex;
+	justify-content: flex;
+	flex-direction: column;
+	align-items: center;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.card .front {
+	background-image: url('black.jpg');
+	/*background-color: white;
+	background-image: linear-gradient(45deg, #EA3832 25%, transparent 25%, transparent 75%, #EA3832 75%), 
+					  linear-gradient(-45deg,#EA3832 25%, transparent 25%, transparent 75%, #EA3832 75%);*/
+	background-size: 120px 175px;
+	/*background-position: 0 0, 0 0; */
+}
+
+.card .back {
+	/*background-image: url('amongus.jpg');*/
+	/*background-size: 120px 175px;*/
+	transform: rotateY(180deg);
+}
+
+.card .back span, .card .back p{
+	transform: rotateY(0deg);
+}
+
+/* button */
+
+.buttonContainer {
+  margin: 5px;
+  position: relative;
+  height: 200px;
+  display: flex;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 195%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.shuffleBtn {
+  padding: 20px;
+  width: 240px;
+  height: 350px;
+  transition: all 0.5s;
+  cursor: pointer;
+  background-color: Transparent;
+  background-image: url('cardpack.png');
+  background-size: 240px 350px;
+  -webkit-clip-path: polygon(0% 0%, 0% 0%, 0% 6%, 0% 6%, 0% 39%, 0% 66%, 0% 100%, 36% 100%, 63% 100%, 100% 100%, 100% 72%, 100% 40%, 100% 0%);
+  clip-path: polygon(0% 0%, 0% 0%, 0% 6%, 0% 6%, 0% 39%, 0% 66%, 0% 100%, 36% 100%, 63% 100%, 100% 100%, 100% 72%, 100% 40%, 100% 0%);
+  border: none;
+  z-index: 15;
+}
+
+.shuffleBtn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.shuffleBtn:hover span {
+  padding-right: 25px;
+}
+
+.shuffleBtn:hover span:after{
+  opacity: 1;
+  right: 0;
+}
+
+.shuffleBtn.clicked{
+  clip-path: polygon(0% 0%, 100% 0%, 100% 6%, 0% 6%, 0% 39%, 0% 66%, 0% 100%, 36% 100%, 63% 100%, 100% 100%, 100% 72%, 100% 40%, 100% 0%);
+}
+
+.shuffleBtn.effect{
+  animation: 0.05s cardpackeffect;
+}
+
+.shuffleBtn.down{
+  animation: 1.0s cardpackdown;
+  transform: translate(0px, 1000px);
+} 
+
+ @keyframes cardpackeffect {
+  0% { transform: translate(0px, 0px); }
+  50% { transform: translate(0px, 3px); }
+  100% { transform: translate(0px, 0px); }
+ }
+ 
+  @keyframes cardpackdown {
+  0% { transform: translate(0px, 0px); }
+  100% { transform: translate(0px, 1000px); }
+ }
+
+.shuffleBtn.glow {
+	box-shadow: 120px 80px 40px 20px #0ff;
+ }
